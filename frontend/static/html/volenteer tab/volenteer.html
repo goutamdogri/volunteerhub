@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>volunteer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      height: 40px;
+      background-color: black;
+    }
+
+    .volunteer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .box1,
+    .box2 {
+      background-size: cover;
+      background-position: center;
+      display: inline-block;
+      width: 30%;
+      height: 400px;
+      margin: 10px;
+      position: relative;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      overflow: hidden;
+    }
+
+    .box1 img,
+    .box2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensures the image covers the box while maintaining aspect ratio */
+    }
+
+    .box1 h1,
+    .box2 h1,
+    .box3 h1 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .box1 h2,
+    .box2 h2 {
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 15px;
+      text-align: center;
+      margin: 0;
+      padding: 5px;
+      color: red;
+      box-sizing: border-box;
+    }
+
+    .box1:hover h2,
+    .box2:hover h2 {
+
+      opacity: 0;
+    }
+
+    .box1:hover h1,
+    .box2:hover h1 {
+      /* color: blue;  */
+      opacity: 0;
+    }
+
+    .additional-text {
+      display: none;
+      font-size: 20px;
+      color: #33DDFF;
+      width: 100%;
+      margin: 0;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-weight: 5px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .box1:hover .additional-text,
+    .box2:hover .additional-text {
+      display: block;
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      left: 0;
+    }
+
+    .volunteer2 {
+      width: 100%;
+      background-color: #28BCC5;
+    }
+
+    .box1 button,
+    .box2 button,
+    .box3 button {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30%;
+      margin: 0;
+      padding: 15px;
+      background-color: red;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .box1 button a,
+    .box2 button a,
+    .box3 button a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .box1 button:hover,
+    .box2 button:hover,
+    .box3 button:hover {
+      background-color: yellow;
+    }
+
+
+
+    .container {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #28BCC5;
+    }
+
+    .logo img {
+      height: 74px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: black;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .signin {
+      /* background-color: white; */
+      height: 74px;
+      width: 90px;
+      height: 40px;
+      width: 70px;
+      color: black;
+      border: none;
+      /* padding: 10px 20px; */
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .signin a {
+      height: 74px;
+      width: 90px;
+      height: 40px;
+      width: 70px;
+      color: black;
+      border: none;
+      /* padding: 10px 20px; */
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      color: black;
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: white;
+      color: black;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-column {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .footer-column p,
+    .footer-column ul {
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 5px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 10px 0;
+      background-color: white;
+      border-top: 1px solid #444;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="logo"><img src="WhatsApp Image 2024-05-17 at 2.46.07 AM.jpeg" alt="logo"></div>
+    <nav>
+      <ul>
+        <li class="li"><a href="../home.html">Home</a></li>
+        <li><a href="../help.html">Help</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <button class="signin"><a href="../signin.html">Signin</a></button>
+      </ul>
+    </nav>
+  </div>
+  <!-- Volunteer available -->
+  <div class="volunteer">
+    <h1>Volunteer Available</h1>
+    <div class="box1">
+      <img src="Shushant.jpeg" alt="">
+      <h1>Shushant Kumar</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Shushant is available for weekend shifts.</div>
+    </div>
+    <div class="box1" alt="">
+      <img src="aniket.jpeg" alt="">
+      <h1>Aniket kumar</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Aniket specializes in community outreach.</div>
+    </div>
+    <div class="box1" alt="">
+      <img src="Gautam.jpg" alt="">
+      <h1>Gautam Gambhir</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Gautam is experienced in event management.</div>
+    </div>
+
+
+    <div class="box2" alt="">
+      <img src="Dogri.jpg" alt="">
+      <h1>Gautam Dogri</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Gautam is a veteran volunteer with 5 years of experience.</div>
+    </div>
+    <div class="box2" alt="">
+      <img src="aditya.jpg" alt="">
+      <h1>Aditya karn</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Aditya is available for weekday evenings.</div>
+
+    </div>
+    <div class="box2" alt="">
+      <img src="dev.jpg" alt="">
+      <h1>Dev Kumar</h1>
+      <h2>know more</h2>
+      <div class="additional-text">Dev can help with administrative tasks.</div>
+    </div>
+
+    <!-- next part volunter is needed bala-->
+    <div class="volunteer2">
+      <h1>Volunteer Needed</h1>
+    </div>
+    <div class="box1">
+      <img src="food.jpg" alt="">
+      <button><a href="VNeeded.html">Show Intrest</a></button>
+    </div>
+    <div class="box1" alt="">
+      <img src="dirt.jpg" alt="">
+      <button><a href="VNeeded.html">Show Intrest</a></button>
+    </div>
+    <div class="box1" alt="">
+      <img src="teacher.jpeg" alt="">
+      <button><a href="">Show Intrest</a></button>
+
+    </div>
+
+
+    <div class="box2" alt="">
+      <img src="environment.jpg" alt="">
+      <button><a href="VNeeded.html">Show Intrest</a></button>
+    </div>
+    <div class="box2" alt="">
+      <img src="animal.jpg" alt="">
+      <button><a href="VNeeded.html">Show Intrest</a></button>
+    </div>
+    <div class="box2" alt="">
+      <img src="R.jpg" alt="">
+      <button><a href="VNeeded.html">Show Intrest</a></button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Learn more about our company and values.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: info@rakshak.com</li>
+          <li>Phone: +123 456 7890</li>
+          <li>Address: 123 Techno city, Kolkata, India</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><img src="facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="x.webp" alt="Twitter"></a>
+          <a href="#"><img src="insta.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

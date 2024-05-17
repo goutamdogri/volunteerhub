@@ -20,14 +20,6 @@ const helpReqSchema = new Schema(
       addressLine2: {
         type: String,
       },
-      district: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
       state: {
         type: String,
         required: true,

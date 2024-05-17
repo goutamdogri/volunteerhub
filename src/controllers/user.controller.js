@@ -19,42 +19,89 @@ const generateTokens = async (userId) => {
     await user.save({ validateBeforeSave: false });
     return { accessToken, refreshToken };
   } catch (error) {
-    throw new ApiError(
-      500,
-      "something went wrong"
-    );
+    throw new ApiError(500, "something went wrong");
   }
 };
 
 const checkInput = (req) => {
-	const { fullName, email, username, isVolunteer, gender, DOB, interest, password } = req.body;
-	const avatarLocalPath = req.file?.path;
+  const {
+    fullName,
+    email,
+    username,
+    isVolunteer,
+    gender,
+    DOB,
+    interest,
+    password,
+  } = req.body;
+  const avatarLocalPath = req.file?.path;
 
-	const arr = [fullName, email, username, isVolunteer, gender, DOB, interest, password, avatarLocalPath];
-	const fields = ["fullName", "email", "username", "isVolunteer", "gender", "DOB", "interest", "password", "avatarLocalPath"]
+  const arr = [
+    fullName,
+    email,
+    username,
+    isVolunteer,
+    gender,
+    DOB,
+    interest,
+    password,
+    avatarLocalPath,
+  ];
+  const fields = [
+    "fullName",
+    "email",
+    "username",
+    "isVolunteer",
+    "gender",
+    "DOB",
+    "interest",
+    "password",
+    "avatarLocalPath",
+  ];
 
-	let result = {};
+  let result = {};
 
-	for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     const fieldName = fields[i];
-		if(arr[i] && arr[i]?.trim() != "") {
-			result[fieldName] = arr[i].trim();
-		} else {
-			result[fieldName] = false
-		}
-	}
+    if (arr[i] && arr[i]?.trim() != "") {
+      result[fieldName] = arr[i].trim();
+    } else {
+      result[fieldName] = false;
+    }
+  }
 
-	return result
-}
+  return result;
+};
 
 const registerUser = asyncHandler(async (req, res) => {
-  const {fullName, email, username, isVolunteer, gender, DOB, interest, password, avatarLocalPath} = checkInput(req);
+  const {
+    fullName,
+    email,
+    username,
+    isVolunteer,
+    gender,
+    DOB,
+    interest,
+    password,
+    avatarLocalPath,
+  } = checkInput(req);
 
   async function deleteLocalFile(avatar) {
     if (avatar) fs.unlinkSync(avatar);
   }
 
-  if (!(fullName || email || username || isVolunteer || gender || DOB || password || avatarLocalPath)) {
+  if (
+    !(
+      fullName ||
+      email ||
+      username ||
+      isVolunteer ||
+      gender ||
+      DOB ||
+      password ||
+      avatarLocalPath
+    )
+  ) {
     deleteLocalFile(avatarLocalPath);
     throw new ApiError(400, "Please fill required fields");
   }
@@ -79,8 +126,8 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     username: username.toLowerCase(),
-		isVolunteer,
-		gender,
+    isVolunteer,
+    gender,
     DOB,
     interest: interest || "",
   });
@@ -93,9 +140,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(500, "Something went wrong while registering the user");
   }
 
-  const { accessToken, refreshToken } = await generateTokens(
-    user._id
-  );
+  const { accessToken, refreshToken } = await generateTokens(user._id);
 
   const options = {
     httpOnly: true,
@@ -138,9 +183,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid user credential");
   }
 
-  const { accessToken, refreshToken } = await generateTokens(
-    user._id
-  );
+  const { accessToken, refreshToken } = await generateTokens(user._id);
 
   // send token to secure cookie
   const loggedInUser = await User.findById(user._id).select(
@@ -220,8 +263,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       secure: true,
     };
 
-    const { accessToken, newRefreshToken } =
-      await generateTokens(user._id);
+    const { accessToken, newRefreshToken } = await generateTokens(user._id);
 
     return res
       .status(200)
@@ -267,7 +309,8 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
-  const {fullName, email, username, isVolunteer, gender, DOB, interest} = checkInput(req);
+  const { fullName, email, username, isVolunteer, gender, DOB, interest } =
+    checkInput(req);
 
   if (fullName) {
     await User.findByIdAndUpdate(req.user?._id, {
@@ -361,6 +404,54 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, user, "Avatar updated successfully"));
 });
 
+const getVolunteer = asyncHandler(async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+
+  const myAggregate = User.aggregate([
+    {
+      $match: {
+        isVolunteer: true,
+      },
+    },
+    {
+      $project: {
+        fullName: 1,
+        email: 1,
+        username: 1,
+        isVolunteer: 1,
+        gender: 1,
+        DOB: 1,
+        interest: 1,
+        avatar: 1,
+        _id: 1,
+        createdAt: 1,
+        updatedAt: 1,
+        __v: 1,
+      }
+    }
+  ]);
+
+  let options = {
+    page,
+    limit,
+  };
+
+  let volunteers;
+  await User.aggregatePaginate(myAggregate, options, (err, result) => {
+    if (err) {
+      throw new ApiError(500, err);
+    }
+
+    if (result) {
+      volunteers = result;
+    }
+  });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, volunteers, "Volunteers fetched successfully"));
+});
+
 export {
   registerUser,
   loginUser,
@@ -369,5 +460,6 @@ export {
   changeCurrentPassword,
   getCurrentUser,
   updateAccountDetails,
-  updateUserAvatar
+  updateUserAvatar,
+  getVolunteer,
 };

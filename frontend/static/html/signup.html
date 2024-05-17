@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-size: cover;
+      background-color: #89CEA3;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form {
+      margin-top: 10px;
+    }
+
+    .texts {
+      /* position: absolute; */
+      font-size: 20px;
+      margin-top: 10px;
+      margin-left: 10px;
+      padding-left: 50px;
+      text-align: center;
+    }
+
+    .texts input {
+
+      height: 20px;
+      margin: 2px;
+      border: none;
+      border-bottom: 1px solid;
+      background-color: white;
+      font-size: 18px;
+    }
+
+    .gender {
+      font-size: 20px;
+      margin: 10px;
+    }
+
+    .gender span {
+      margin-right: 20px;
+    }
+
+    .details {
+      font-size: 40px;
+      color: black;
+      text-align: center;
+      margin-top: 5px;
+      /* font-size: 10px; */
+    }
+
+    p {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .container .left img {
+      /* height: 10%; */
+      width: 40%;
+    }
+
+    .button {
+      /* position:absolute; */
+      margin-top: 10px;
+      height: 5vh;
+      width: 17vh;
+      border: 2px;
+      background: #89CEA3;
+      overflow-x: hidden;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background-color: yellow;
+    }
+
+    .button a {
+      text-decoration: none;
+      font-size: 30px;
+      color: white;
+    }
+
+    .right {
+      font-size: 20px;
+      width: 50%;
+      /* Adjust the width as needed */
+      height: 100vh;
+      position: fixed;
+      right: 0;
+      top: 0;
+      box-shadow: 0 0 3px 0 rgba(192, 83, 83, 0.3);
+      background: #D5DDDF;
+      text-align: center;
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+
+    .right .h1 {
+      font-size: 30px;
+      display: flex;
+      flex-direction: left;
+      margin-left: 100px;
+    }
+
+    .texts {
+      margin-top: 25px;
+    }
+
+    h4 {
+      font-size: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="left">
+      <img src="../image/signup-page-img.jpg" alt="image">
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="form">
+      <form action="" id="userForm">
+        <div class="details"> sign up form</div>
+        <div class="texts">
+          Full Name: <input type="text" name="fullName">
+        </div>
+
+        <div class="texts">
+          email: <input type="email" name="email">
+        </div>
+
+        <div class="texts">
+          username: <input type="text" name="username">
+        </div>
+
+        <div class="gender">
+          <span class="">Gender:</span>
+          male <input type="radio" value="male" name="gender" class="gender1">
+          female <input type="radio" value="female" name="gender" class="gender2">
+        </div>
+
+        <div class="texts">
+          date of birth: <input type="date" name="DOB">
+        </div>
+
+        <div class="texts">
+          want to be volunteer:
+          yes <input type="radio" value="yes" name="isVolanteer">
+          no <input type="radio" value="no" name="isVolanteer">
+        </div>
+
+        <div class="texts">
+          Volunteer Intrest:
+          <select id="" name="interest" class="texts">
+            <option value="Animal rescue"> Animal rescue </option>
+            <option value="Natural disaster relief work"> Natural disaster relief work</option>
+            <option value="Fund Raising">Fund Raising</option>
+          </select>
+        </div>
+
+        <!-- <div class="details">
+          login details
+        </div> -->
+
+        <div class="texts">
+          Enter mobile number: <input type="number" minlength="10" maxlength="10" name="phNumber">
+        </div>
+
+        <div class="texts">
+          Password: <input type="password" name="password">
+        </div>
+
+        <div class="texts">
+          Confirm-password: <input type="password" name="confirmPassword">
+        </div>
+
+        <div class="texts">
+          avatar: <input type="file" name="avatar">
+        </div>
+
+        <input type="submit" value="Submit" class="button">
+      </form>
+
+      <h4>
+        Already registered?
+        <a class="atag" href="signin.html">sign in</a>
+      </h4>
+
+    </div>
+  </div>
+
+<script src="../javascript/signup.js"></script>
+</body>
+
+</html>

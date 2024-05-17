@@ -9,8 +9,6 @@ const addHelpReq = asyncHandler(async (req, res) => {
     disaster,
     addressLine1,
     addressLine2,
-    district,
-    city,
     state,
     pincode,
     message,
@@ -21,10 +19,6 @@ const addHelpReq = asyncHandler(async (req, res) => {
     disaster?.trim() === "" ||
     !addressLine1 ||
     addressLine1.trim() === "" ||
-    !district ||
-    district.trim() === "" ||
-    !city ||
-    city.trim() === "" ||
     !state ||
     state.trim() === "" ||
     !pincode ||
@@ -38,8 +32,6 @@ const addHelpReq = asyncHandler(async (req, res) => {
     address: {
       addressLine1,
       addressLine2,
-      district,
-      city,
       state,
       pincode,
     },

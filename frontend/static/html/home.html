@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+    }
+
+    .container {
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background-color: #28BCC5;
+      width: 100%;
+
+    }
+
+    .logo img {
+      height: 74px;
+      width: 100px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      color: black;
+    }
+
+    nav li {
+      margin-right: 20px;
+      color: black;
+      font-size: 25px;
+      display: inline;
+    }
+
+    @media only screen and (max-width: 650px) {
+      .nav {
+        float: none;
+        position: absolute;
+
+        width: 100%;
+        left: 0;
+        top: 85px;
+        padding: 30px 0px 150px 0px;
+        border-top: 1px solid #4a4848;
+        clip-path: circle(0% at 100% 0%);
+        transition: all .8s;
+      }
+
+      .li {
+        display: block;
+        text-align: center;
+        margin: 25px 5px;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
+      .mobile-menu {
+        clip-path: circle(112% at 100% 0%);
+      }
+
+      .li a:after {
+        display: none;
+      }
+    }
+
+    nav a {
+      color: #1B2727;
+
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+
+    nav a:hover {
+      color: #98249e;
+    }
+
+    .boxes {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+
+    .box {
+      width: 100%;
+      height: 300px;
+      padding-top: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .box img {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+    }
+
+
+    .box div {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 30px;
+
+      /* flex: none; */
+    }
+
+
+    .signin {
+      width: 80px;
+      border-radius: 500px;
+      margin-right: 25px;
+
+    }
+
+    .signin:hover {
+      background-color: aquamarine;
+      color: rgb(250, 0, 0);
+    }
+
+    .box {
+      height: 300px;
+      width: 100%;
+
+    }
+
+    .scroll_container {
+      width: 100%;
+      height: 200px;
+      /* background-color: #ddd; */
+      overflow: hidden;
+      margin-top: 50px;
+
+    }
+
+    .ads_box_holder {
+      width: 100%;
+      white-space: nowrap;
+      min-width: 100%;
+      width: auto !important;
+      width: 100%;
+    }
+
+    .ads_box {
+      display: inline-block;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 190px;
+      height: 200px;
+      padding: 10px 10px;
+      margin-right: 10px;
+    }
+
+    .ads_box img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: slide 20s infinite;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0px)
+      }
+
+      10% {
+        transform: translateX(-200px)
+      }
+
+      20% {
+        transform: translateX(-400px)
+      }
+
+      30% {
+        transform: translateX(-600px)
+      }
+
+      40% {
+        transform: translateX(-800px)
+      }
+
+      50% {
+        transform: translateX(-1000px)
+      }
+
+      60% {
+        transform: translateX(-1200px)
+      }
+
+      70% {
+        transform: translateX(-1400px)
+      }
+
+      80% {
+        transform: translateX(-1600px)
+      }
+
+      90% {
+        transform: translateX(-1800px)
+      }
+
+      100% {
+        transform: translateX(0px)
+      }
+    }
+
+    p1 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 10px;
+    }
+
+    .about {
+      background-color: #28BCC5;
+      border-radius: 15px;
+      padding: 25px;
+      opacity: 0.8;
+    }
+
+    .about:hover {
+      opacity: 1;
+
+    }
+
+    i {
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .dropbtn {
+      background-color: #3e8e41;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-left: 200px;
+      margin-top: 25px;
+    }
+
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: #3e8e41;
+    }
+
+
+    #myInput {
+      box-sizing: border-box;
+      background-image: url('searchicon.png');
+      background-position: 14px 12px;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      padding: 14px 20px 12px 45px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #myInput:focus {
+      outline: 3px solid #ddd;
+    }
+
+    .dropdown {
+      position: relative;
+      margin-top: 25px;
+      display: inline-block;
+      height: 100px;
+      background-color: #28BCC5;
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f6f6f6;
+      min-width: 230px;
+      border: 1px solid #ddd;
+      z-index: 1;
+
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1
+    }
+
+    .show {
+      display: block;
+    }
+
+    .box1,
+    .box2 {
+      background-size: cover;
+      background-position: center;
+      display: inline-block;
+      width: 30%;
+      height: 400px;
+      margin: 10px;
+      position: relative;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      overflow: hidden;
+    }
+
+    .box1 img,
+    .box2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensures the image covers the box while maintaining aspect ratio */
+    }
+
+    .volunteer2 {
+      width: 100%;
+      background-color: #28BCC5;
+    }
+
+    .box1 button,
+    .box2 button,
+    .box3 button {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30%;
+      margin: 0;
+      padding: 15px;
+      background-color: #28BCC5;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .box1 button a,
+    .box2 button a,
+    .box3 button a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .box1 button:hover,
+    .box2 button:hover,
+    .box3 button:hover {
+      background-color: yellow;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-column {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .footer-column p,
+    .footer-column ul {
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 5px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #222;
+      border-top: 1px solid #444;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.8em;
+    }
+
+    .mobilenav {
+      display: none;
+    }
+
+    .mobilenav i {
+      float: right;
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo"><img src="../image/logo.png" alt="logo"></div>
+      <div class="mobilenav">
+        <i class="fa fa-bars"></i>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li class="li"><a href="home.html">Home</a></li>
+          <li><a href="help.html">Help</a></li>
+          <li><a href="./volenteer tab/volenteer.html">Volunteer</a></li>
+          <button class="signin"><a href="signin.html">Signin</a></button>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="scroll_container">
+    <div class="ads_box_holder">
+      <div class="ads_box"><img src="../image/disasterImages/41586_2011_BF473291a_Fig1_HTML.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/52801.avif"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download (1).jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download.jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/GettyImages-1266552048_LQ.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/hydflood4-scaled.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/41586_2011_BF473291a_Fig1_HTML.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/52801.avif"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download (1).jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download.jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/GettyImages-1266552048_LQ.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/hydflood4-scaled.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/41586_2011_BF473291a_Fig1_HTML.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/52801.avif"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download (1).jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/download.jpeg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/GettyImages-1266552048_LQ.jpg"></div>
+      <div class="ads_box"><img src="../image/disasterImages/hydflood4-scaled.jpg"></div>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">disaster</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+      <a href="#about">Earth</a>
+      <a href="#Animalrescue">Animal rescue</a>
+      <a href="#naturaldesaster">natural desaster</a>
+      <a href="#contact">Contact</a>
+      <a href="#custom">Custom</a>
+      <a href="#support">Support</a>
+      <a href="#tools">Tools</a>
+    </div>
+  </div>
+  <!-- next part volunter is needed bala-->
+  <div class="volunteer2">
+    <h1>Volunteer Needed</h1>
+  </div>
+  <div class="box1">
+    <img src="../image/animal.jpg" alt="">
+    <button><a href="VNeeded.html">Show Intrest</a></button>
+  </div>
+  <div class="box1" alt="">
+    <img src="../image/dirt.jpg" alt="">
+    <button><a href="VNeeded.html">Show Intrest</a></button>
+  </div>
+  <div class="box1" alt="">
+    <img src="../image/environment.jpg" alt="">
+    <button><a href="">Show Intrest</a></button>
+
+  </div>
+
+
+  <div class="box2" alt="">
+    <img src="../image/food.jpg" alt="">
+    <button><a href="VNeeded.html">Show Intrest</a></button>
+  </div>
+  <div class="box2" alt="">
+    <img src="../html/volenteer tab/R.jpg" alt="">
+    <button><a href="VNeeded.html">Show Intrest</a></button>
+  </div>
+  <div class="box2" alt="">
+    <img src="../html/volenteer tab/teacher.jpeg" alt="">
+    <button><a href="VNeeded.html">Show Intrest</a></button>
+  </div>
+  <div class="about">
+    <p1>
+      <h1>About Us</h1> <br>
+      Our Mission is to bring volunteers and organisations together to share time, skills, and passion to promote
+      India's social development.
+
+      <h8>Rakshak</h8> delivers impact in social development areas such as <i>Education, Poverty Alleviation,
+        Environment, Health, Gender Equality, Human Rights, Disability, Youth Welfare, Elderly Welfare, Child Welfare &
+        Active Citizenship.</i> It achieves its mission by working closely with these volunteers at one end and with
+      organisations that work on these impact areas at the other end.
+
+      Beginning from 2024, iVolunteer now engages 1000+ volunteers every year through a range of programs. It partners
+      with a strong network of 300+ credible non-profits across India through Rksahak Centres in , Kolkata,Bihar.
+
+      Rakshak programs have been supported by the most credible charitable foundations and have also developed strategic
+      employee volunteering partnerships with some of the top companies operating in India.
+
+
+      Recognised by global initiatives promoting volunteerism Rakshak is recognised as the leading organisation
+      promoting volunteerism in India and is an active member of the Points of Light Foundation, Global Pro Bono Network
+      and IAVE amongst others. Read more about our global connect here.
+
+      PS: We would cry with joy if you could lend a hand in supporting volunteering in India. Just drop in a mail to
+      tell us how you can support.
+      Beginning from 2024, Rakshak now engages 1 volunteers every year through a range of programs. It partners with a
+      strong network of 300+ credible non-profits across India through Rakshak Centres in Kolkata, Bihar.
+
+      Rakshak programs have been supported by the most credible charitable foundations and have also developed strategic
+      employee volunteering partnerships with some of the top companies operating in India.
+
+      iVolunteer is also convenor of India's first and only recognition focused on volunteers - iVolunteer Awards.
+
+      Recognised by global initiatives promoting volunteerism iVolunteer is recognised as the leading organisation
+      promoting volunteerism in India and is an active member of the Points of Light Foundation, Global Pro Bono Network
+      and IAVE amongst others. Read more about our global connect here.
+
+      PS: We would cry with joy if you could lend a hand in supporting volunteering in India. Just drop in a mail
+      (admin@iVolunteer.in) to tell us how you can support.
+    </p1>
+    <div class="content">
+
+
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Learn more about our company and values.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: info@rakshak.com</li>
+          <li>Phone: +123 456 7890</li>
+          <li>Address: 123 Techno city, Kolkata, India</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><img src="facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="x.webp" alt="Twitter"></a>
+          <a href="#"><img src="insta.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="../javascript/home.js"></script>
+</body>
+
+
+</html>
